@@ -1,22 +1,26 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import styled from "../../typed-components";
+import styled, { css } from "../../typed-components";
 
 // styling this Component
-const Container = styled.div`
+const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: #ffec34;
+  background: #dcdcdc;
 `;
 
-const MainFrame = styled.div`
-  width: 80%;
-  height: 80%;
-  border: 1px solid black;
-  border-bottom: 1px solid #dcdcdc;
+const Container = styled.div`
+  width: 440px;
+  height: 775px;
+  border: 1px solid #d6c413;
+  background: #ffec34;
+
+  @media (max-width: 450px) {
+    width: 100vw;
+  }
 `;
 
 const LoginFrame = styled.div`
@@ -24,43 +28,84 @@ const LoginFrame = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100%;
-  padding-top: 20%;
-`;
-const AccountFound = styled.div`
-  width: 100%;
+  height: 90%;
+  padding-top: 30%;
 `;
 
 const VectorIcon = styled.img`
   display: block;
-  width: 35%;
-  height: 23%;
+  width: 28%;
 `;
 const LoginInputFrame = styled.div`
-  margin-top: 5%;
+  width: 70%;
+  margin-top: 10%;
 `;
 const LoginInput = styled.input`
   width: 100%;
-  height: 5%;
+  height: 50px;
   border: 1px solid #dcdcdc;
+  padding: 10px;
+
+  &::placeholder {
+    color: #adadad;
+  }
+`;
+
+const LoginBtn = styled.button`
+  width: 100%;
+  height: 50px;
+  border: 1px solid #dcdcdc;
+  border-radius: 2px;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  color: #9b9b9b;
+  ${props => props.isMinLength && LoginBtnActive};
+`;
+
+const LoginBtnActive = css`
+  background: #423630;
+  color: white;
+  border: 1px solid #423630;
+  cursor: pointer;
+`;
+
+const AccountFindFrame = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const AccountSpan = styled.span`
+  width: 50%;
+  text-align: ${props => (props.right ? "right" : "left")};
+  border-right: ${props => (props.right ? "1px solid #b1b1b1" : "")};
+  ${props => (props.right ? "padding-right:15px " : "padding-left:15px")};
+  font-size: 13px;
+  color: #6e6e6e;
+  cursor: pointer;
 `;
 
 interface IProps extends RouteComponentProps<any> {}
 
 const LoginPresenter: React.SFC<IProps> = () => (
-  <Container>
-    <MainFrame>
+  <Background>
+    <Container>
       <LoginFrame>
         <VectorIcon src="//t1.daumcdn.net/cfile/tistory/246E224B56FFF86305" />
 
         <LoginInputFrame>
-          <LoginInput />
-          <LoginInput />
+          <LoginInput placeholder="카카오계정 (이메일 또는 전화번호)" />
+          <LoginInput placeholder="비밀번호" />
+          <LoginBtn isMinLength={true}>로그인</LoginBtn>
         </LoginInputFrame>
       </LoginFrame>
-      <AccountFound />
-    </MainFrame>
-  </Container>
+      <AccountFindFrame>
+        <AccountSpan right={true}>카카오 회원가입</AccountSpan>
+        <AccountSpan>비밀번호 재설정</AccountSpan>
+      </AccountFindFrame>
+    </Container>
+  </Background>
 );
 
 export default LoginPresenter;
