@@ -73,7 +73,8 @@ const LoginBtn = styled.button`
   font-size: 14px;
   letter-spacing: 1.5px;
   color: #9b9b9b;
-  ${props => (props.isMinLength ? LoginBtnActive : "")};
+  ${props =>
+    props.isIdMinLength && props.isPasswordMinLength ? LoginBtnActive : ""};
 `;
 
 const LoginBtnActive = css`
@@ -102,14 +103,16 @@ const AccountSpan = styled.span`
 interface IProps extends RouteComponentProps<any> {
   inputUserId: string;
   inputUserPw: string;
-  isMinLength: boolean;
+  isIdMinLength: boolean;
+  isPasswordMinLength: boolean;
   onInputchange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const LoginPresenter: React.SFC<IProps> = ({
   inputUserId,
   inputUserPw,
-  isMinLength,
+  isIdMinLength,
+  isPasswordMinLength,
   onInputchange
 }) => (
   <Background>
@@ -130,7 +133,12 @@ const LoginPresenter: React.SFC<IProps> = ({
             onChange={onInputchange}
             placeholder="비밀번호"
           />
-          <LoginBtn isMinLength={isMinLength}>로그인</LoginBtn>
+          <LoginBtn
+            isIdMinLength={isIdMinLength}
+            isPasswordMinLength={isPasswordMinLength}
+          >
+            로그인
+          </LoginBtn>
         </LoginInputFrame>
       </LoginFrame>
       <AccountFindFrame>

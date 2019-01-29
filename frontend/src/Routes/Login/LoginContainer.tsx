@@ -3,17 +3,24 @@ import LoginPresenter from "./LoginPresenter";
 
 class LoginContainer extends React.Component {
   public state = {
-    isMinLength: false,
+    isIdMinLength: false,
+    isPasswordMinLength: false,
     inputUserId: "",
     inputUserPw: ""
   };
   public render() {
-    const { inputUserId, inputUserPw, isMinLength } = this.state;
+    const {
+      inputUserId,
+      inputUserPw,
+      isIdMinLength,
+      isPasswordMinLength
+    } = this.state;
     return (
       <LoginPresenter
         inputUserId={inputUserId}
         inputUserPw={inputUserPw}
-        isMinLength={isMinLength}
+        isIdMinLength={isIdMinLength}
+        isPasswordMinLength={isPasswordMinLength}
         onInputchange={this.onInputchange}
       />
     );
@@ -22,16 +29,25 @@ class LoginContainer extends React.Component {
     const {
       target: { name, value }
     } = event;
-
-    if (name === "inputUserPw") {
-      console.log(event);
-      if (value.length >= 8) {
+    if (name === "inputUserId") {
+      if (value.length > 0) {
         this.setState({
-          isMinLength: true
+          isIdMinLength: true
         });
       } else {
         this.setState({
-          isMinLength: false
+          isIdMinLength: false
+        });
+      }
+    }
+    if (name === "inputUserPw") {
+      if (value.length >= 8) {
+        this.setState({
+          isPasswordMinLength: true
+        });
+      } else {
+        this.setState({
+          isPasswordMinLength: false
         });
       }
     }
