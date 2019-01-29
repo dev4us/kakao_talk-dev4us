@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dev4us.github.io/kakao_talk-dev4us/",
   "dependencies": {
     "apollo": "^2.3.1",
     "apollo-boost": "^0.1.27",

@@ -2,34 +2,34 @@ import React from "react";
 import SignUpPresenter from "./SignUpPresenter";
 
 class SignUpContainer extends React.Component {
+  public state = {
+    signUpemail: "",
+    emailValidation: false
+  };
   public render() {
-    return <SignUpPresenter onInputchange={this.onInputchange} />;
+    const { emailValidation } = this.state;
+    return (
+      <SignUpPresenter
+        onInputchange={this.onInputchange}
+        emailValidation={emailValidation}
+      />
+    );
   }
   public onInputchange: React.ChangeEventHandler<HTMLInputElement> = event => {
     const {
       target: { name, value }
     } = event;
-    if (name === "inputUserId") {
-      if (value.length > 0) {
-        this.setState({
-          isIdMinLength: true
-        });
-      } else {
-        this.setState({
-          isIdMinLength: false
-        });
-      }
-    }
-    if (name === "inputUserPw") {
-      if (value.length >= 8) {
-        this.setState({
-          isPasswordMinLength: true
-        });
-      } else {
-        this.setState({
-          isPasswordMinLength: false
-        });
-      }
+
+    const mailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+    if (value.match(mailRegExp) != null) {
+      this.setState({
+        emailValidation: true
+      });
+    } else {
+      this.setState({
+        emailValidation: false
+      });
     }
 
     this.setState({

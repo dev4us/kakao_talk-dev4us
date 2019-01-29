@@ -3,6 +3,8 @@ import { RouteComponentProps } from "react-router-dom";
 import styled from "../../typed-components";
 import Helmet from "react-helmet";
 import Header from "../../Components/Header";
+import CompleteBtn from "../../Components/CompleteBtn";
+import SignUpInput from "../../Components/SignUpInput";
 
 // styling this Component
 const Background = styled.div`
@@ -24,38 +26,52 @@ const Container = styled.div`
     height: 100vh;
   }
 `;
-
-const H2 = styled.h2`
+const Information = styled.div`
+  margin-top: 15px;
+`;
+const Noto = styled.p`
+  margin-top: 15px;
   margin-left: 15px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
+  font-size: 13px;
+  color: #8f8f8f;
+  line-height: 1.3;
 `;
 
-const InputUserEmail = styled.input`
-  width: 100%;
-  height: 50px;
-  margin-top: 20px;
-  border-top: 2px solid #dcdcdc;
-  border-bottom: 2px solid #dcdcdc;
-  border-left: none;
-  border-right: none;
-  font-size: 20px;
-  padding-left: 20px;
+const BigNoto = styled(Noto)`
+  font-size: 18px;
+  color: black;
 `;
 
 interface IProps extends RouteComponentProps<any> {
   onInputchange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  emailValidation: boolean;
 }
 
-const SignUpPresenter: React.SFC<IProps> = ({ onInputchange }) => (
+const SignUpPresenter: React.SFC<IProps> = ({
+  onInputchange,
+  emailValidation
+}) => (
   <Background>
     <Container>
       <Helmet>
         <title>카카오계정 만들기 | 카카오톡</title>
       </Helmet>
       <Header title={`카카오계정 만들기`} backTo={"/"} />
-      <H2>카카오계정으로 사용할 이메일을 입력해주세요.</H2>
-      <InputUserEmail />
+      <BigNoto>카카오계정으로 사용할 이메일을 입력해주세요.</BigNoto>
+      <SignUpInput
+        defaultText={"이메일을 입력해주세요"}
+        onChange={onInputchange}
+      />
+      <Information>
+        <Noto>· 입력한 이메일로 가입 완료 메일이 발송됩니다.</Noto>
+        <Noto>
+          · 꼭 실제로 사용중인 이메일주소를 입력해주세요. 비밀번호 분실 시
+          이메일을 통해 재설정이 가능합니다.
+        </Noto>
+      </Information>
+      <CompleteBtn complete={emailValidation} />
     </Container>
   </Background>
 );
