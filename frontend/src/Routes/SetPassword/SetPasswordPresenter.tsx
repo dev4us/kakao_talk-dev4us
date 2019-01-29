@@ -4,7 +4,6 @@ import styled from "../../typed-components";
 import Helmet from "react-helmet";
 import Header from "../../Components/Header";
 import CompleteBtn from "../../Components/CompleteBtn";
-import SignUpInput from "../../Components/SignUpInput";
 
 // styling this Component
 const Background = styled.div`
@@ -47,16 +46,32 @@ const BigNoto = styled(Noto)`
   color: black;
 `;
 
+const InputUserPassword = styled.input.attrs({
+  type: "password"
+})`
+  width: 100%;
+  height: 50px;
+  border-top: 2px solid #dcdcdc;
+  border-bottom: 2px solid #dcdcdc;
+  border-left: none;
+  border-right: none;
+  font-size: 18px;
+  padding-left: 20px;
+  &::placeholder {
+    font-size: 15px;
+    color: #dcdcdc;
+  }
+  margin-top: ${props => (props.firstChild ? "20px" : "-6px")};
+`;
+
 interface IProps extends RouteComponentProps<any> {
   onInputchange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  emailValidation: boolean;
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  passwordValidation: boolean;
 }
 
-const SignUpPresenter: React.SFC<IProps> = ({
+const SetPasswordPresenter: React.SFC<IProps> = ({
   onInputchange,
-  emailValidation,
-  onSubmit
+  passwordValidation
 }) => (
   <Background>
     <Container>
@@ -64,21 +79,34 @@ const SignUpPresenter: React.SFC<IProps> = ({
         <title>카카오계정 만들기 | 카카오톡</title>
       </Helmet>
       <Header title={`카카오계정 만들기`} backTo={"/"} />
-      <BigNoto>카카오계정으로 사용할 이메일을 입력해주세요.</BigNoto>
-      <SignUpInput
-        defaultText={"이메일을 입력해주세요"}
+      <BigNoto>비밀번호를 입력해주세요.</BigNoto>
+      <InputUserPassword
+        name={"setPassword"}
+        placeholder={"비밀번호를 입력해주세요"}
+        onChange={onInputchange}
+        firstChild={true}
+      />
+      <InputUserPassword
+        name={"confirmPassword"}
+        placeholder={"비밀번호를 한번 더 입력해주세요"}
         onChange={onInputchange}
       />
       <Information>
-        <Noto>· 입력한 이메일로 가입 완료 메일이 발송됩니다.</Noto>
         <Noto>
-          · 꼭 실제로 사용중인 이메일주소를 입력해주세요. 비밀번호 분실 시
-          이메일을 통해 재설정이 가능합니다.
+          · 비밀번호는 8 ~ 16 자의 영문 대소문자, 숫자, 특수문자를 조합하여
+          설정해주세요.
+        </Noto>
+        <Noto>
+          · 다른 사이트에서 사용하는 것과 통일하거나 쉬운 비밀번호는 사용하지
+          마세요.
+        </Noto>
+        <Noto>
+          · 안전한 계정 사용을 위해 비밀번호는 주기적으로 변경해주세요.
         </Noto>
       </Information>
-      <CompleteBtn complete={emailValidation} onSubmit={onSubmit} />
+      <CompleteBtn complete={passwordValidation} />
     </Container>
   </Background>
 );
 
-export default SignUpPresenter;
+export default SetPasswordPresenter;

@@ -1,9 +1,18 @@
 import React from "react";
 import SignUpPresenter from "./SignUpPresenter";
+import { RouteComponentProps } from "react-router-dom";
 
-class SignUpContainer extends React.Component {
+interface IState {
+  signUpMail: string;
+  emailValidation: boolean;
+}
+
+class SignUpContainer extends React.Component<
+  RouteComponentProps<any>,
+  IState
+> {
   public state = {
-    signUpemail: "",
+    signUpMail: "",
     emailValidation: false
   };
   public render() {
@@ -12,6 +21,7 @@ class SignUpContainer extends React.Component {
       <SignUpPresenter
         onInputchange={this.onInputchange}
         emailValidation={emailValidation}
+        onSubmit={this.onSubmit}
       />
     );
   }
@@ -34,6 +44,18 @@ class SignUpContainer extends React.Component {
 
     this.setState({
       [name]: value
+    } as any);
+  };
+
+  public onSubmit = () => {
+    const { history } = this.props;
+    const { signUpMail } = this.state;
+
+    history.push({
+      pathname: "/set-password",
+      state: {
+        signUpMail
+      }
     });
   };
 }

@@ -25,10 +25,13 @@ const BtnActive = css`
 
 interface IProps {
   complete: boolean;
+  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const Header: React.SFC<IProps> = ({ complete }) => (
-  <Container complete={complete}>다음</Container>
+const Header: React.SFC<IProps> = ({ complete, onSubmit }) => (
+  <Container complete={complete} onClick={onSubmit}>
+    다음
+  </Container>
 );
 
 export default Header;
