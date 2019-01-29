@@ -40,7 +40,20 @@ const LoginInputFrame = styled.div`
   width: 70%;
   margin-top: 10%;
 `;
-const LoginInput = styled.input`
+const InputUserId = styled.input`
+  width: 100%;
+  height: 50px;
+  border: 1px solid #dcdcdc;
+  padding: 10px;
+
+  &::placeholder {
+    color: #adadad;
+  }
+`;
+
+const InputUserPw = styled(InputUserId).attrs({
+  type: "password"
+})`
   width: 100%;
   height: 50px;
   border: 1px solid #dcdcdc;
@@ -60,7 +73,7 @@ const LoginBtn = styled.button`
   font-size: 14px;
   letter-spacing: 1.5px;
   color: #9b9b9b;
-  ${props => props.isMinLength && LoginBtnActive};
+  ${props => (props.isMinLength ? LoginBtnActive : "")};
 `;
 
 const LoginBtnActive = css`
@@ -86,18 +99,38 @@ const AccountSpan = styled.span`
   cursor: pointer;
 `;
 
-interface IProps extends RouteComponentProps<any> {}
+interface IProps extends RouteComponentProps<any> {
+  inputUserId: string;
+  inputUserPw: string;
+  isMinLength: boolean;
+  onInputchange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-const LoginPresenter: React.SFC<IProps> = () => (
+const LoginPresenter: React.SFC<IProps> = ({
+  inputUserId,
+  inputUserPw,
+  isMinLength,
+  onInputchange
+}) => (
   <Background>
     <Container>
       <LoginFrame>
         <VectorIcon src="//t1.daumcdn.net/cfile/tistory/246E224B56FFF86305" />
 
         <LoginInputFrame>
-          <LoginInput placeholder="카카오계정 (이메일 또는 전화번호)" />
-          <LoginInput placeholder="비밀번호" />
-          <LoginBtn isMinLength={true}>로그인</LoginBtn>
+          <InputUserId
+            name={`inputUserId`}
+            value={inputUserId}
+            onChange={onInputchange}
+            placeholder="카카오계정 (이메일 또는 전화번호)"
+          />
+          <InputUserPw
+            name={`inputUserPw`}
+            value={inputUserPw}
+            onChange={onInputchange}
+            placeholder="비밀번호"
+          />
+          <LoginBtn isMinLength={isMinLength}>로그인</LoginBtn>
         </LoginInputFrame>
       </LoginFrame>
       <AccountFindFrame>
