@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Router Branch (isLoggedIn : false)
 import Login from "../../Routes/Login";
+import SignUp from "../../Routes/SignUp";
 
 interface IProps {
   isLoggedIn: boolean;
@@ -22,6 +23,8 @@ const LoggedInRoutes = () => (
 const LoggedOutRoutes = () => (
   <Switch>
     <Route path={"/"} exact={true} component={Login} />
+    <Route path={"/sign-up"} component={SignUp} />
+    <Route path={"*"} to={"/"} />
   </Switch>
 );
 

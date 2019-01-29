@@ -1,6 +1,7 @@
 import React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, Link } from "react-router-dom";
 import styled, { css } from "../../typed-components";
+import Helmet from "react-helmet";
 
 // styling this Component
 const Background = styled.div`
@@ -20,6 +21,7 @@ const Container = styled.div`
 
   @media (max-width: 450px) {
     width: 100vw;
+    height: 100vh;
   }
 `;
 
@@ -91,7 +93,6 @@ const AccountFindFrame = styled.div`
 `;
 
 const AccountSpan = styled.span`
-  width: 50%;
   text-align: ${props => (props.right ? "right" : "left")};
   border-right: ${props => (props.right ? "1px solid #b1b1b1" : "")};
   ${props => (props.right ? "padding-right:15px " : "padding-left:15px")};
@@ -117,8 +118,11 @@ const LoginPresenter: React.SFC<IProps> = ({
 }) => (
   <Background>
     <Container>
+      <Helmet>
+        <title>로그인 | 카카오톡</title>
+      </Helmet>
       <LoginFrame>
-        <VectorIcon src="//t1.daumcdn.net/cfile/tistory/246E224B56FFF86305" />
+        <VectorIcon src="//raw.githubusercontent.com/dev4us/source_warehouse/master/images/kakao_vector.png" />
 
         <LoginInputFrame>
           <InputUserId
@@ -142,7 +146,9 @@ const LoginPresenter: React.SFC<IProps> = ({
         </LoginInputFrame>
       </LoginFrame>
       <AccountFindFrame>
-        <AccountSpan right={true}>카카오 회원가입</AccountSpan>
+        <Link to={"/sign-up"}>
+          <AccountSpan right={true}>카카오 회원가입</AccountSpan>
+        </Link>
         <AccountSpan>비밀번호 재설정</AccountSpan>
       </AccountFindFrame>
     </Container>
