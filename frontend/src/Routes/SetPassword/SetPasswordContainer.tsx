@@ -21,7 +21,7 @@ class SetPasswordContainer extends React.Component {
       target: { name, value }
     } = event;
 
-    const passwordRegExp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+    const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}/;
 
     this.setState(
       {
