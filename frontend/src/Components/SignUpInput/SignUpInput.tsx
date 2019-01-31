@@ -19,14 +19,15 @@ const Container = styled.input`
 
 interface IProps {
   defaultText: string;
+  name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Header: React.SFC<IProps> = ({ defaultText, onChange }) =>
+const Header: React.SFC<IProps> = ({ defaultText, onChange, name }) =>
   defaultText ? (
-    <Container placeholder={defaultText} onChange={onChange} />
+    <Container name={name} placeholder={defaultText} onChange={onChange} />
   ) : (
-    <Container onChange={onChange} />
+    <Container name={name} onChange={onChange} />
   );
 
 export default Header;

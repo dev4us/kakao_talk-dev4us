@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteComponentProps, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled, { css } from "../../typed-components";
 import Helmet from "react-helmet";
 
@@ -101,7 +101,7 @@ const AccountSpan = styled.span`
   cursor: pointer;
 `;
 
-interface IProps extends RouteComponentProps<any> {
+interface IProps {
   inputUserId: string;
   inputUserPw: string;
   isIdMinLength: boolean;

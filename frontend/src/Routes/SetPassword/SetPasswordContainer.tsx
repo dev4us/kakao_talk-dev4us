@@ -1,12 +1,26 @@
 import React from "react";
+import { RouteComponentProps } from "react-router-dom";
 import SetPasswordPresenter from "./SetPasswordPresenter";
 
-class SetPasswordContainer extends React.Component {
-  public state = {
-    setPassword: "",
-    confirmPassword: "",
-    passwordValidation: false
-  };
+interface IProps extends RouteComponentProps<any> {}
+
+class SetPasswordContainer extends React.Component<IProps, any> {
+  constructor(props) {
+    super(props);
+
+    if (props.location.state.signUpMail) {
+      this.state = {
+        setUserMail: props.location.state.signUpMail,
+        setPassword: "",
+        confirmPassword: "",
+        passwordValidation: false
+      };
+    } else {
+      props.history.push("/");
+    }
+
+    console.log(this.state);
+  }
   public render() {
     const { passwordValidation } = this.state;
     return (

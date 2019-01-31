@@ -1,5 +1,4 @@
 import React from "react";
-import { RouteComponentProps } from "react-router-dom";
 import styled from "../../typed-components";
 import Helmet from "react-helmet";
 import Header from "../../Components/Header";
@@ -64,7 +63,7 @@ const InputUserPassword = styled.input.attrs({
   margin-top: ${props => (props.firstChild ? "20px" : "-6px")};
 `;
 
-interface IProps extends RouteComponentProps<any> {
+interface IProps {
   onInputchange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   passwordValidation: boolean;
 }

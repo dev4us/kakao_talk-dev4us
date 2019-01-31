@@ -1,5 +1,4 @@
 import React from "react";
-import { RouteComponentProps } from "react-router-dom";
 import styled from "../../typed-components";
 import Helmet from "react-helmet";
 import Header from "../../Components/Header";
@@ -47,7 +46,7 @@ const BigNoto = styled(Noto)`
   color: black;
 `;
 
-interface IProps extends RouteComponentProps<any> {
+interface IProps {
   onInputchange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   emailValidation: boolean;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -66,6 +65,7 @@ const SignUpPresenter: React.SFC<IProps> = ({
       <Header title={`카카오계정 만들기`} backTo={"/"} />
       <BigNoto>카카오계정으로 사용할 이메일을 입력해주세요.</BigNoto>
       <SignUpInput
+        name={"signUpMail"}
         defaultText={"이메일을 입력해주세요"}
         onChange={onInputchange}
       />
