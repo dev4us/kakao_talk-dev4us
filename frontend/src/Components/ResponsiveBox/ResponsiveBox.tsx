@@ -13,7 +13,7 @@ const ResponsiveBox = styled.div`
 const MainFrame = styled.div`
   width: 440px;
   height: 775px;
-
+  border: 1px solid white;
   @media (max-width: 450px) {
     width: 100vw;
     height: 100vh;

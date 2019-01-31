@@ -24,12 +24,12 @@ const AppPresenter: React.SFC<IProps> = ({ isLoggedIn }) => (
 
 const LoggedInRoutes = () => (
   <>
-    <Route path={"/main"} component={TopBar} />
+    <Route component={TopBar} />
     <Switch>
       <Route path={"/main/friends"} component={Friends} />
       <Route path={"/main/test"} component={Login} />
+      <Redirect from={"*"} to={"/main/friends"} />
     </Switch>
-    <Redirect from={"*"} to={"/main/friends"} />
   </>
 );
 

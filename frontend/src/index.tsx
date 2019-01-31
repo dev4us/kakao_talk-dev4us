@@ -7,7 +7,7 @@ import GlobalStyle from "./global-styles";
 
 ReactDOM.render(
   <>
-    <App data={false} />
+    <App data={true} />
     <Favicon url="//raw.githubusercontent.com/dev4us/source_warehouse/master/images/kakaolink_btn_small.ico" />
     <GlobalStyle />
   </>,
