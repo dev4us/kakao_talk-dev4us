@@ -16,6 +16,7 @@ class SetPasswordContainer extends React.Component<IProps, IState> {
     if (!props.location.state) {
       props.history.push("/");
     }
+
     this.state = {
       setUserMail: props.location.state && props.location.state.signUpMail,
       setPassword: "",

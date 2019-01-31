@@ -4,25 +4,11 @@ import styled, { css } from "../../typed-components";
 import Helmet from "react-helmet";
 
 // styling this Component
-const Background = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background: #dcdcdc;
-`;
-
-const Container = styled.div`
-  width: 440px;
-  height: 775px;
+const ContentsFrame = styled.div`
+  width: 100%;
+  height: 100%;
   border: 1px solid #d6c413;
   background: #ffec34;
-
-  @media (max-width: 450px) {
-    width: 100vw;
-    height: 100vh;
-  }
 `;
 
 const LoginFrame = styled.div`
@@ -116,45 +102,43 @@ const LoginPresenter: React.SFC<IProps> = ({
   isPasswordMinLength,
   onInputchange
 }) => (
-  <Background>
-    <Container>
-      <Helmet>
-        <title>로그인 | 카카오톡</title>
-      </Helmet>
-      <LoginFrame>
-        <VectorIcon src="//raw.githubusercontent.com/dev4us/source_warehouse/master/images/kakao_vector.png" />
+  <ContentsFrame>
+    <Helmet>
+      <title>로그인 | 카카오톡</title>
+    </Helmet>
+    <LoginFrame>
+      <VectorIcon src="//raw.githubusercontent.com/dev4us/source_warehouse/master/images/kakao_vector.png" />
 
-        <LoginInputFrame>
-          <InputUserId
-            name={`inputUserId`}
-            value={inputUserId}
-            onChange={onInputchange}
-            placeholder="카카오계정 (이메일 또는 전화번호)"
-          />
-          <InputUserPw
-            name={`inputUserPw`}
-            value={inputUserPw}
-            onChange={onInputchange}
-            placeholder="비밀번호"
-          />
-          <LoginBtn
-            isIdMinLength={isIdMinLength}
-            isPasswordMinLength={isPasswordMinLength}
-          >
-            로그인
-          </LoginBtn>
-        </LoginInputFrame>
-      </LoginFrame>
-      <AccountFindFrame>
-        <Link to={"/sign-up"}>
-          <AccountSpan right={true}>카카오 회원가입</AccountSpan>
-        </Link>
-        <Link to={"/"}>
+      <LoginInputFrame>
+        <InputUserId
+          name={`inputUserId`}
+          value={inputUserId}
+          onChange={onInputchange}
+          placeholder="카카오계정 (이메일 또는 전화번호)"
+        />
+        <InputUserPw
+          name={`inputUserPw`}
+          value={inputUserPw}
+          onChange={onInputchange}
+          placeholder="비밀번호"
+        />
+        <LoginBtn
+          isIdMinLength={isIdMinLength}
+          isPasswordMinLength={isPasswordMinLength}
+        >
+          로그인
+        </LoginBtn>
+      </LoginInputFrame>
+    </LoginFrame>
+    <AccountFindFrame>
+      <Link to={"/sign-up"}>
+        <AccountSpan right={true}>카카오 회원가입</AccountSpan>
+      </Link>
+      <Link to={"/"}>
         <AccountSpan>비밀번호 재설정</AccountSpan>
-        </Link>
-      </AccountFindFrame>
-    </Container>
-  </Background>
+      </Link>
+    </AccountFindFrame>
+  </ContentsFrame>
 );
 
 export default LoginPresenter;
