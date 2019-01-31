@@ -149,7 +149,9 @@ const LoginPresenter: React.SFC<IProps> = ({
         <Link to={"/sign-up"}>
           <AccountSpan right={true}>카카오 회원가입</AccountSpan>
         </Link>
+        <Link to={"/"}>
         <AccountSpan>비밀번호 재설정</AccountSpan>
+        </Link>
       </AccountFindFrame>
     </Container>
   </Background>

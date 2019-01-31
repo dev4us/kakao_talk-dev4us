@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 // Router Branch (isLoggedIn : false)
 import Login from "../../Routes/Login";
@@ -26,7 +26,7 @@ const LoggedOutRoutes = () => (
     <Route path={"/"} exact={true} component={Login} />
     <Route path={"/sign-up"} component={SignUp} />
     <Route path={"/set-password"} component={SetPassword} />
-    <Route path={"*"} to={"/"} />
+    <Redirect from={"*"} to={"/"} />
   </Switch>
 );
 
