@@ -5,7 +5,8 @@ import {
   faUser,
   faComment,
   faCog,
-  faBell
+  faBell,
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 
@@ -19,6 +20,41 @@ const Container = styled.div`
 
 const LogoFrame = styled.div`
   flex: 1;
+`;
+
+const TopToolFrame = styled.div`
+  position: relative;
+  float: right;
+  top: 10px;
+  right: 15px;
+  & svg {
+    color: #8a8a8a;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+`;
+
+const UnderlineButton = styled.div`
+  position: relative;
+  float: left;
+  width: 10px;
+  height: 10px;
+  top: 3px;
+  right: 20px;
+  border-bottom: 2px solid #8a8a8a;
+  cursor: pointer;
+`;
+
+const WindowButton = styled.div`
+  position: relative;
+  float: left;
+  width: 10px;
+  height: 10px;
+  top: 3px;
+  right: 10px;
+  border: 2px solid #8a8a8a;
+  cursor: pointer;
 `;
 
 const TopBtnFrame = styled.div`
@@ -98,6 +134,11 @@ const TopBar = () => (
   <Container>
     <LogoFrame>
       <Logo src="//raw.githubusercontent.com/dev4us/source_warehouse/master/images/kakaotalk_list_logo.png" />
+      <TopToolFrame>
+        <UnderlineButton />
+        <WindowButton />
+        <FontAwesomeIcon icon={faTimes} />
+      </TopToolFrame>
     </LogoFrame>
     <TopBtnFrame>
       <TopMenuLogo name={"UserLogo"} to={"/main/friends"}>

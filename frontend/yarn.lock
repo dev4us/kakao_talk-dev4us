@@ -111,6 +111,12 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.13"
 
+"@fortawesome/free-regular-svg-icons@^5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.7.0.tgz#b0127111924a2506cb6313dfcb140f0cbc9e35b1"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.13"
+
 "@fortawesome/free-solid-svg-icons@^5.7.0":
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.7.0.tgz#a5cc69f1b99ed50e78a8bd75c4b6bf74c8224b6a"
@@ -7213,7 +7219,7 @@ react-is@^16.6.0, react-is@^16.7.0:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.7.0.tgz#c1bd21c64f1f1364c6f70695ec02d69392f41bfa"
 
-react-router-dom@^4.2.2, react-router-dom@^4.3.1:
+react-router-dom@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
   dependencies:
@@ -7223,13 +7229,6 @@ react-router-dom@^4.2.2, react-router-dom@^4.3.1:
     prop-types "^15.6.1"
     react-router "^4.3.1"
     warning "^4.0.1"
-
-react-router-tabs@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-router-tabs/-/react-router-tabs-1.2.0.tgz#c8ee46fe6803de923e260a6f4f7d47bb9b67cd75"
-  dependencies:
-    prop-types "^15.6.0"
-    react-router-dom "^4.2.2"
 
 react-router@^4.3.1:
   version "4.3.1"
