@@ -1,7 +1,13 @@
 import React from "react";
-import styled from "../../typed-components";
+import styled, { css } from "../../typed-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faComment } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faComment,
+  faCog,
+  faBell
+} from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -24,22 +30,68 @@ const Logo = styled.img`
   margin-top: 11px;
 `;
 
-const UserLogo = styled.div`
+const TopMenuLogo = styled(NavLink)`
   position: relative;
   float: left;
-  color: white;
-  font-size: 30px;
-  margin-left: 28px;
-  margin-top: 10px;
+  cursor: pointer;
+  color: #7b736e;
+  ${props =>
+    props.name === "UserLogo"
+      ? css`
+          font-size: 25px;
+          margin-left: 28px;
+          margin-top: 15px;
+        `
+      : props.name === "CommentLogo"
+      ? css`
+          font-size: 29px;
+          margin-left: 37px;
+          margin-top: 12px;
+        `
+      : props.name === "SettingLogo"
+      ? css`
+          font-size: 29px;
+          margin-left: 30px;
+          margin-top: 10px;
+        `
+      : ""}
+
+  &.active {
+    color: white;
+  }
 `;
 
-const CommentLogo = styled.div`
-  position: relative;
-  float: left;
+const Notification = styled.div`
+  position: absolute;
+  top: -7px;
+  left: 17px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 15px;
+  background: #ff5b49;
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.4;
   color: white;
-  font-size: 35px;
-  margin-left: 37px;
-  margin-top: 7px;
+`;
+
+const TopRightBtnFrame = styled.div`
+  position: relative;
+  cursor: pointer;
+  top: 15px;
+  right: 18px;
+  float: right;
+  text-align: center;
+  line-height: 1.9;
+`;
+
+const TopRightLogo = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #4c403b;
+  font-size: 15px;
+  color: #938c87;
 `;
 
 const TopBar = () => (
@@ -48,12 +100,25 @@ const TopBar = () => (
       <Logo src="//raw.githubusercontent.com/dev4us/source_warehouse/master/images/kakaotalk_list_logo.png" />
     </LogoFrame>
     <TopBtnFrame>
-      <UserLogo>
+      <TopMenuLogo name={"UserLogo"} to={"/main/friends"}>
         <FontAwesomeIcon icon={faUser} />
-      </UserLogo>
-      <CommentLogo>
+        <Notification>1</Notification>
+      </TopMenuLogo>
+
+      <TopMenuLogo name={"CommentLogo"} to={"/main/chats"}>
         <FontAwesomeIcon icon={faComment} />
-      </CommentLogo>
+        <Notification>3</Notification>
+      </TopMenuLogo>
+
+      <TopMenuLogo name={"SettingLogo"} to={"/main/setting"}>
+        <FontAwesomeIcon icon={faCog} />
+      </TopMenuLogo>
+
+      <TopRightBtnFrame>
+        <TopRightLogo>
+          <FontAwesomeIcon icon={faBell} />
+        </TopRightLogo>
+      </TopRightBtnFrame>
     </TopBtnFrame>
   </Container>
 );

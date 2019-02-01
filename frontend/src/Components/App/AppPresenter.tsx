@@ -4,11 +4,14 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import ResponsiveBox from "../ResponsiveBox";
 
 // Router Branch (isLoggedIn : false)
+import TopBar from "../TopBar";
+
 import Login from "../../Routes/Login";
 import SignUp from "../../Routes/SignUp";
 import SetPassword from "../../Routes/SetPassword";
 import Friends from "../../Routes/Friends";
-import TopBar from "../TopBar";
+import Chats from "../../Routes/Chats";
+import Setting from "../../Routes/Setting";
 
 interface IProps {
   isLoggedIn: boolean;
@@ -27,7 +30,8 @@ const LoggedInRoutes = () => (
     <Route component={TopBar} />
     <Switch>
       <Route path={"/main/friends"} component={Friends} />
-      <Route path={"/main/test"} component={Login} />
+      <Route path={"/main/chats"} component={Chats} />
+      <Route path={"/main/setting"} component={Setting} />
       <Redirect from={"*"} to={"/main/friends"} />
     </Switch>
   </>
