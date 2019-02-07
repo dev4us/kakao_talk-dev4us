@@ -9,7 +9,7 @@ const allResolvers: any = fileLoader(
 );
 
 const mergedTypes = mergeTypes(allTypes);
-const mergedResolvers = mergeResolvers(allResolvers);
+const mergedResolvers: any = mergeResolvers(allResolvers);
 
 const schema = makeExecutableSchema({
   typeDefs: mergedTypes,
