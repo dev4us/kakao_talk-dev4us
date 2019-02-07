@@ -147,7 +147,7 @@ const LoginPresenter = () => (
         </ProfileObject>
       </MyProfileFrame>
 
-      <SubTitle>친구 1</SubTitle>
+      <SubTitle>친구 3</SubTitle>
 
       <FriendObject firstChild={true}>
         <ProfileObject>
