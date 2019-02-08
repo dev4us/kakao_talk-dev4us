@@ -1,8 +1,40 @@
-type Greeting {
-  text: String!
-  error: Boolean!
+type Chat {
+  id: Int!
+  message: String!
+  chatRoom: ChatRoom!
+  sender: User!
+  listeners: [User]
+  createdAt: String!
+}
+
+type ChatRoom {
+  id: Int
+  participant: [User]!
+  chat: [Chat]
+  createdAt: String!
+}
+
+type RequestEmailVerificationResponse {
+  ok: Boolean!
+  error: String
 }
 
 type Query {
-  sayHello: Greeting!
+  RequestEmailVerification: RequestEmailVerificationResponse!
+}
+
+type User {
+  id: Int!
+  email: String!
+  password: String!
+  username: String
+  profilePhoto: String
+  backgroundPhoto: String
+  statusMsg: String
+  verifiedEmail: String!
+  friends: [User]
+  myMessage: [Chat]
+  otherMessage: Chat
+  createdAt: String!
+  updatedAt: String
 }

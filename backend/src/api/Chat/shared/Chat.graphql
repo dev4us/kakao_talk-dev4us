@@ -1,0 +1,8 @@
+type Chat {
+  id: Int!
+  message: String!
+  chatRoom: ChatRoom!
+  sender: User!
+  listeners: [User]
+  createdAt: String!
+}

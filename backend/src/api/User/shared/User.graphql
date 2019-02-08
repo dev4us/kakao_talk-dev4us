@@ -1,0 +1,15 @@
+type User {
+  id: Int!
+  email: String!
+  password: String!
+  username: String
+  profilePhoto: String
+  backgroundPhoto: String
+  statusMsg: String
+  verifiedEmail: String!
+  friends: [User]
+  myMessage: [Chat]
+  otherMessage: Chat
+  createdAt: String!
+  updatedAt: String
+}

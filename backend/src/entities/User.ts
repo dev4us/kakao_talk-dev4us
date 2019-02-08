@@ -6,12 +6,13 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToOne
+  Entity,
+  ManyToOne
 } from "typeorm";
 import { IsEmail } from "class-validator";
-import ChatRoom from "./ChatRoom";
 import Chat from "./Chat";
 
+@Entity()
 class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -41,11 +42,11 @@ class User extends BaseEntity {
   @OneToMany(type => User, user => user.friends)
   friends: User[];
 
-  @OneToMany(type => ChatRoom, chatroom => chatroom.participant)
-  chatRooms: ChatRoom[];
+  @OneToMany(type => Chat, chat => chat.sender)
+  myMessage: Chat[];
 
-  @OneToOne(type => Chat, chat => chat.user)
-  chat: Chat;
+  @ManyToOne(type => Chat, chat => chat.listeners)
+  otherMessage: Chat;
 
   @CreateDateColumn() createdAt: string;
 

@@ -2,14 +2,15 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
-  OneToOne,
   PrimaryGeneratedColumn,
-  JoinColumn,
-  ManyToOne
+  ManyToOne,
+  Entity,
+  OneToMany
 } from "typeorm";
 import User from "./User";
 import ChatRoom from "./ChatRoom";
 
+@Entity()
 class Chat extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -20,9 +21,11 @@ class Chat extends BaseEntity {
   @ManyToOne(type => ChatRoom, chatroom => chatroom.chat)
   chatRoom: ChatRoom;
 
-  @OneToOne(type => User, user => user.chat)
-  @JoinColumn()
-  user: User;
+  @ManyToOne(type => User, user => user.myMessage)
+  sender: User;
+
+  @OneToMany(type => User, user => user.otherMessage)
+  listeners: User[];
 
   @CreateDateColumn() createdAt: string;
 }

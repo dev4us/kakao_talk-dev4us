@@ -2,17 +2,19 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  ManyToMany,
-  OneToMany
+  OneToMany,
+  Entity,
+  ManyToMany
 } from "typeorm";
 import User from "./User";
 import Chat from "./Chat";
 
+@Entity()
 class ChatRoom extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToMany(type => User, user => user.chatRooms)
+  @ManyToMany(type => User, { cascade: false })
   participant: User[];
 
   @OneToMany(type => Chat, chat => chat.chatRoom)

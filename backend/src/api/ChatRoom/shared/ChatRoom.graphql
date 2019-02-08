@@ -1,0 +1,6 @@
+type ChatRoom {
+  id: Int
+  participant: [User]!
+  chat: [Chat]
+  createdAt: String!
+}
