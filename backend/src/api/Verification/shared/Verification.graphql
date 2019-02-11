@@ -1,0 +1,8 @@
+type Verification {
+  id: Int!
+  email: String!
+  verifiedCode: String!
+  isVerified: Boolean!
+  createdAt: String!
+  updatedAt: String
+}

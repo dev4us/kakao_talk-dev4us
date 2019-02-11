@@ -6,10 +6,15 @@ type User {
   profilePhoto: String
   backgroundPhoto: String
   statusMsg: String
-  verifiedEmail: String!
+  verifiedEmail: Boolean!
   friends: [User]
   myMessage: [Chat]
   otherMessage: Chat
   createdAt: String!
   updatedAt: String
+  lastLoginAt: String
+}
+
+type Query {
+  user: User
 }

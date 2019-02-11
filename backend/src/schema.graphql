@@ -19,8 +19,8 @@ type RequestEmailVerificationResponse {
   error: String
 }
 
-type Query {
-  RequestEmailVerification: RequestEmailVerificationResponse!
+type Mutation {
+  RequestEmailVerification(email: String!, password: String!): RequestEmailVerificationResponse!
 }
 
 type User {
@@ -35,6 +35,20 @@ type User {
   friends: [User]
   myMessage: [Chat]
   otherMessage: Chat
+  createdAt: String!
+  updatedAt: String
+  lastLoginAt: String
+}
+
+type Query {
+  user: User
+}
+
+type Verification {
+  id: Int!
+  email: String!
+  verifiedCode: String!
+  isVerified: Boolean!
   createdAt: String!
   updatedAt: String
 }

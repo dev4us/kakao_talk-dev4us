@@ -3,6 +3,9 @@ type RequestEmailVerificationResponse {
   error: String
 }
 
-type Query {
-  RequestEmailVerification: RequestEmailVerificationResponse!
+type Mutation {
+  RequestEmailVerification(
+    email: String!
+    password: String!
+  ): RequestEmailVerificationResponse!
 }

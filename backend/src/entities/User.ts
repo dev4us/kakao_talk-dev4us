@@ -49,8 +49,10 @@ class User extends BaseEntity {
   otherMessage: Chat;
 
   @CreateDateColumn() createdAt: string;
-
   @UpdateDateColumn() updatedAt: string;
+
+  @Column({ type: "text", nullable: true })
+  lastLoginAt: string;
 
   public comparePassword(password: string): Promise<boolean> {
     return bcrypt.compare(password, this.password);
