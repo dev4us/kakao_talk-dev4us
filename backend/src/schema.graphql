@@ -14,13 +14,19 @@ type ChatRoom {
   createdAt: String!
 }
 
-type RequestEmailVerificationResponse {
+type CompleteEmailVerificationResponse {
   ok: Boolean!
   error: String
 }
 
 type Mutation {
+  CompleteEmailVerification(userId: Int!, verifiedCode: String!): CompleteEmailVerificationResponse!
   RequestEmailVerification(email: String!, password: String!): RequestEmailVerificationResponse!
+}
+
+type RequestEmailVerificationResponse {
+  ok: Boolean!
+  error: String
 }
 
 type User {
@@ -31,7 +37,7 @@ type User {
   profilePhoto: String
   backgroundPhoto: String
   statusMsg: String
-  verifiedEmail: String!
+  verifiedEmail: Boolean!
   friends: [User]
   myMessage: [Chat]
   otherMessage: Chat
