@@ -3,12 +3,16 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 // Background
 import ResponsiveBox from "../ResponsiveBox";
 
-// Router Branch (isLoggedIn : false)
-import TopBar from "../TopBar";
+// Public Router
+import EmailVerification from "../../Routes/EmailVerification";
 
+// Router Branch (isLoggedIn : false)
 import Login from "../../Routes/Login";
 import SignUp from "../../Routes/SignUp";
 import SetPassword from "../../Routes/SetPassword";
+
+// Router Branch (isLoggedIn : true)
+import TopBar from "../TopBar";
 import Friends from "../../Routes/Friends";
 import Chats from "../../Routes/Chats";
 import Setting from "../../Routes/Setting";
@@ -19,9 +23,16 @@ interface IProps {
 
 const AppPresenter: React.SFC<IProps> = ({ isLoggedIn }) => (
   <BrowserRouter>
-    <ResponsiveBox
-      contents={isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />}
-    />
+    <Switch>
+      <Route
+        path={"/emailVerification/:userId/:verificationCode"}
+        exact={true}
+        component={EmailVerification}
+      />
+      <ResponsiveBox
+        contents={isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />}
+      />
+    </Switch>
   </BrowserRouter>
 );
 
